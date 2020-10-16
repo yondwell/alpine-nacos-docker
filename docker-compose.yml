@@ -4,8 +4,7 @@ services:
     hostname: nacos1
     container_name: nacos1
     build:
-      context: ./build
-    image: yond/nacos:latest
+    image: yondwell/alpine-nacos:latest
     volumes:
       - ./data/cluster-logs/nacos:/home/nacos/logs
     ports:
@@ -27,7 +26,7 @@ services:
 
   nacos2:
     hostname: nacos2
-    image: yond/nacos:latest
+    image: yondwell/alpine-nacos:latest
     container_name: nacos2
     volumes:
       - ./data/cluster-logs/nacos:/home/nacos/logs
@@ -42,7 +41,8 @@ services:
       - MYSQL_SERVICE_PORT=3306
       - MYSQL_SERVICE_USER=mysql-user-nacos
       - MYSQL_SERVICE_PASSWORD=mysql-password-nacos
-    depends_on: 
+    depends_on:
+      - nacos1 
       - mysql
     links: 
       - mysql

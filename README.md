@@ -9,7 +9,8 @@ services:
   nacos1:
     hostname: nacos1
     container_name: nacos1
-    image: clzqxwt/anacos
+    build:
+    image: yondwell/alpine-nacos:latest
     volumes:
       - ./data/cluster-logs/nacos:/home/nacos/logs
     ports:
@@ -31,7 +32,7 @@ services:
 
   nacos2:
     hostname: nacos2
-    image: clzqxwt/anacos
+    image: yondwell/alpine-nacos:latest
     container_name: nacos2
     volumes:
       - ./data/cluster-logs/nacos:/home/nacos/logs
@@ -46,7 +47,8 @@ services:
       - MYSQL_SERVICE_PORT=3306
       - MYSQL_SERVICE_USER=mysql-user-nacos
       - MYSQL_SERVICE_PASSWORD=mysql-password-nacos
-    depends_on: 
+    depends_on:
+      - nacos1 
       - mysql
     links: 
       - mysql
@@ -70,4 +72,4 @@ services:
         - 3306:3306
 ```
 ### nacos数据:
-- [nacos-mysql.sql](https://github.com/alibaba/nacos/blob/develop/distribution/conf/nacos-mysql.sql)
+- [nacos-mysql.sql](https://raw.githubusercontent.com/yondwell/alpine-nacos-docker/master/db/nacos-mysql.sql)
