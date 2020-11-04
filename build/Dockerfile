@@ -3,8 +3,8 @@ FROM alpine
 LABEL author=yondwell<yondwell@gmail.com>
 CMD ["/bin/sh"]
 
-ARG NACOS_VERSION=1.3.2
-ARG MYSQL_VERSION=8.0.20
+ARG NACOS_VERSION=1.4.0
+ARG MYSQL_VERSION=8.0.22
 
 # set environment
 ENV MODE="cluster" \
@@ -13,7 +13,7 @@ ENV MODE="cluster" \
     CLASSPATH=".:/home/nacos/conf:$CLASSPATH" \
     CLUSTER_CONF="/home/nacos/conf/cluster.conf" \
     FUNCTION_MODE="all" \
-    JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" \
+    JAVA_HOME="/usr/lib/jvm/java-1.8-openjdk" \
     NACOS_USER="nacos" \
     JAVA="/usr/lib/jvm/java-1.8.0-openjdk/bin/java" \
     JVM_XMS="2g" \
