@@ -30,7 +30,8 @@ WORKDIR /$BASE_DIR
 
 RUN set -x \
     && apk update \
-    && apk add openjdk8 wget iputils libcurl \
+    && apk add openjdk8 wget \
+    && ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2 \
     && wget  https://github.com/alibaba/nacos/releases/download/${NACOS_VERSION}/nacos-server-${NACOS_VERSION}.tar.gz -P /home \
     && tar -xzvf /home/nacos-server-${NACOS_VERSION}.tar.gz -C /home \
     && mkdir -p /home/nacos/plugins/mysql/ \
