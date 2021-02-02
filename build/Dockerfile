@@ -3,8 +3,7 @@ FROM alpine
 LABEL author=yondwell<yondwell@gmail.com>
 CMD ["/bin/sh"]
 
-ARG NACOS_VERSION=1.4.0
-ARG MYSQL_VERSION=8.0.22
+ARG NACOS_VERSION=1.4.1
 
 # set environment
 ENV MODE="cluster" \
@@ -34,11 +33,6 @@ RUN set -x \
     && ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2 \
     && wget  https://github.com/alibaba/nacos/releases/download/${NACOS_VERSION}/nacos-server-${NACOS_VERSION}.tar.gz -P /home \
     && tar -xzvf /home/nacos-server-${NACOS_VERSION}.tar.gz -C /home \
-    && mkdir -p /home/nacos/plugins/mysql/ \
-    && wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-${MYSQL_VERSION}.tar.gz -P /home/tmp \
-    && tar -xzvf /home/tmp/mysql-connector-java-${MYSQL_VERSION}.tar.gz -C /home/tmp \
-    && mv /home/tmp/mysql-connector-java-${MYSQL_VERSION}/mysql-connector-java-${MYSQL_VERSION}.jar /home/nacos/plugins/mysql/mysql-connector-java-${MYSQL_VERSION}.jar \
-    && rm -rf /home/nacos-server-${NACOS_VERSION}.tar.gz /home/nacos/bin/* /home/nacos/conf/*.properties /home/nacos/conf/*.example /home/nacos/conf/nacos-mysql.sql /home/tmp \
     && ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime \
     && echo '$TIME_ZONE' > /etc/timezone \
     && mkdir -p logs \

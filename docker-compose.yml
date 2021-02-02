@@ -3,7 +3,6 @@ services:
   nacos1:
     hostname: nacos1
     container_name: nacos1
-    build:
     image: yondwell/alpine-nacos:latest
     volumes:
       - ./data/cluster-logs/nacos:/home/nacos/logs
