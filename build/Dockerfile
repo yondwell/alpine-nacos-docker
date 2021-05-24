@@ -3,8 +3,8 @@ FROM alpine
 LABEL author=yondwell<yondwell@gmail.com>
 CMD ["/bin/sh"]
 
-ARG NACOS_VERSION=2.0.0
-ARG HOT_FIX_FLAG=-bugfix
+ARG NACOS_VERSION=2.0.1
+ARG HOT_FIX_FLAG=""
 
 # set environment
 ENV MODE="cluster" \

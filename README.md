@@ -10,7 +10,6 @@ services:
   nacos1:
     hostname: nacos1
     container_name: nacos1
-    build:
     image: yondwell/alpine-nacos:latest
     volumes:
       - ./data/cluster-logs/nacos:/home/nacos/logs
@@ -57,7 +56,7 @@ services:
   mysql:
     container_name: mysql
     image: mysql
-    command: --default-authentication-plugin=mysql_native_password --innodb-autoinc-lock-mode=1
+    command: --default-authentication-plugin=mysql_native_password
     security_opt:
         - seccomp:unconfined
     restart: always
@@ -69,8 +68,6 @@ services:
     volumes:
         - ./db:/docker-entrypoint-initdb.d/ #将nacos初始化sql放到db目录
         - ./data/mysql:/var/lib/mysql
-    ports:
-        - 3306:3306
 ```
 ### nacos数据:
-- [nacos-mysql.sql](https://raw.githubusercontent.com/yondwell/alpine-nacos-docker/master/db/nacos-mysql.sql)
+- [nacos-mysql.sql](https://github.com/alibaba/nacos/blob/develop/distribution/conf/nacos-mysql.sql)
