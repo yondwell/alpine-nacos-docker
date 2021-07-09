@@ -3,7 +3,7 @@ FROM alpine
 LABEL author=yondwell<yondwell@gmail.com>
 CMD ["/bin/sh"]
 
-ARG NACOS_VERSION=2.0.1
+ARG NACOS_VERSION=2.0.2
 ARG HOT_FIX_FLAG=""
 
 # set environment
@@ -42,8 +42,6 @@ RUN set -x \
     && touch start.ou \
     && ln -sf /dev/stdout start.out \
     && ln -sf /dev/stderr start.out
-
-
 
 
 ADD bin/docker-startup.sh bin/docker-startup.sh
