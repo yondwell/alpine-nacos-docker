@@ -1,9 +1,8 @@
 FROM alpine
 
-LABEL author=yondwell<yondwell@gmail.com>
 CMD ["/bin/sh"]
 
-ARG NACOS_VERSION=2.0.2
+ARG NACOS_VERSION=2.0.3
 ARG HOT_FIX_FLAG=""
 
 # set environment
@@ -53,3 +52,5 @@ RUN chmod +x bin/docker-startup.sh
 
 EXPOSE 8848
 ENTRYPOINT ["bin/docker-startup.sh"]
+
+LABEL maintainer="yondwell<yondwell@gmail.com>"
