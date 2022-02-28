@@ -2,7 +2,7 @@ FROM alpine
 
 CMD ["/bin/sh"]
 
-ARG NACOS_VERSION=2.0.3
+ARG NACOS_VERSION=2.0.4
 ARG HOT_FIX_FLAG=""
 
 # set environment
